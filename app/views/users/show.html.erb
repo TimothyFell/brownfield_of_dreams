@@ -10,4 +10,13 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+
+  <section>
+    <h1>GitHub Repositories</h1>
+    <% @user_dashboard_facade.github_repos(5).each do |repo| %>
+      <div class="github_repo">
+        <p><a href="<%= repo.url %>"><%= repo.name %></a></p>
+      </div>
+    <% end %>
+  </section>
 </section>

@@ -2,6 +2,11 @@ require 'rails_helper'
 
 describe 'User' do
   it 'user can sign in' do
+
+    stub_request(:get, "https://api.github.com/user/repos").
+                  to_return(body: File.read("./spec/fixtures/github_repos_fixture.json"))
+
+
     user = create(:user)
 
     visit '/'
@@ -22,6 +27,10 @@ describe 'User' do
   end
 
   it 'can log out', :js do
+
+    stub_request(:get, "https://api.github.com/user/repos").
+                  to_return(body: File.read("./spec/fixtures/github_repos_fixture.json"))
+
     user = create(:user)
 
     visit login_path

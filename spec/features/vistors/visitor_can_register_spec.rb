@@ -2,6 +2,10 @@ require 'rails_helper'
 
 describe 'vister can create an account', :js do
   it ' visits the home page' do
+
+    stub_request(:get, "https://api.github.com/user/repos").
+                  to_return(body: File.read("./spec/fixtures/github_repos_fixture.json"))
+
     email = 'jimbob@aol.com'
     first_name = 'Jim'
     last_name = 'Bob'
