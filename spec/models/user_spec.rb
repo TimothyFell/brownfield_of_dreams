@@ -7,6 +7,14 @@ RSpec.describe User, type: :model do
     it {should validate_presence_of(:password)}
   end
 
+  describe 'token column' do
+    it 'starts empty' do
+      user = create(:user)
+
+      expect(user.token).to eq(nil)
+    end
+  end
+
   describe 'roles' do
     it 'can be created as default user' do
       user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0)

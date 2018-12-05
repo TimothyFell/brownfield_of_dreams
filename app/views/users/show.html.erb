@@ -11,12 +11,17 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-  <section>
-    <h1>GitHub Repositories</h1>
-    <% @user_dashboard_facade.github_repos(5).each do |repo| %>
-      <div class="github_repo">
-        <p><a href="<%= repo.url %>"><%= repo.name %></a></p>
-      </div>
-    <% end %>
-  </section>
+  <% if current_user.token %>
+
+    <section>
+      <h1>GitHub Repositories</h1>
+      <% @user_dashboard_facade.github_repos(5).each do |repo| %>
+        <div class="github_repo repo_id_<%= repo.id %>">
+          <p><a href="<%= repo.url %>"><%= repo.name %></a></p>
+        </div>
+      <% end %>
+    </section>
+
+  <% end %>
+
 </section>
