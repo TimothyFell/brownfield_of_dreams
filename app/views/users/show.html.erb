@@ -22,6 +22,15 @@
       <% end %>
     </section>
 
+    <section>
+      <h1>GitHub Followers</h1>
+      <% @user_dashboard_facade.github_followers.each do |follower| %>
+        <div class="github_follower follower_id_<%= follower.id %>">
+          <p><a href="<%= follower.url %>"><%= follower.name %></a></p>
+        </div>
+      <% end %>
+    </section>
+
   <% end %>
 
 </section>
