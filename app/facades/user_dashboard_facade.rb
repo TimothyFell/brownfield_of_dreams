@@ -1,9 +1,15 @@
 class UserDashboardFacade
 
+  def initialize(user)
+    @user = user
+  end
+
   def github_repos(quantity)
-    get_repos_result[0...quantity].map do |repo_data|
-      Github::Repository.new(repo_data)
-    end
+    # if @user.token
+      get_repos_result[0...quantity].map do |repo_data|
+        Github::Repository.new(repo_data)
+      end
+    # end
   end
 
   private
@@ -13,6 +19,7 @@ class UserDashboardFacade
   end
 
   def github_service
-    GithubService.new
+    GithubService.new(@user.token)
   end
+
 end
