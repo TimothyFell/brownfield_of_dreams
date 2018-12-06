@@ -287,12 +287,12 @@ div.title-bookmark {
   grid-template-columns: 30% 70%;
 }
 
-.github_followers, .github_following{
+.github_followers, .github_followings{
   display: grid;
   grid-gap: 15px;
   grid-template-columns: 25% 25% 25% 25%;
 }
-.github_followers h3, .github_following h3 {
+.github_followers h3, .github_followings h3 {
   width: 100%;
   grid-column: 1 / 5;
 }
