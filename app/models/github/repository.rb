@@ -1,4 +1,5 @@
 class Github::Repository
+
   attr_reader :name,
               :url,
               :id

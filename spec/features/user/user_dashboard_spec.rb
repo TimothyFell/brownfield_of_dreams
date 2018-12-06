@@ -11,7 +11,7 @@ feature 'A user visits their dashboard' do
       to_return(body: File.read("./spec/fixtures/github_followers_fixture.json"))
 
   end
-  
+
   scenario 'can see all github repos' do
     user_1 = create(:user, token: 'token mole')
     user_2 = create(:user, token: 'token pizza')
@@ -54,5 +54,25 @@ feature 'A user visits their dashboard' do
 
     expect(page).to have_content("GitHub Followers")
     expect(page).to have_css(".github_follower", count: 11)
+  end
+
+  scenario 'cant see another users followers' do
+    user_1 = create(:user, token: 'token mole')
+    user_2 = create(:user, token: 'token pizza')
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_2)
+
+    expect { visit '/dashboard'}.to raise_error(ActionView::Template::Error)
+  end
+
+  scenario 'user without token does not see followers' do
+    user_1 = create(:user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+
+    visit '/dashboard'
+
+    expect(page).to_not have_content("GitHub Followers")
+    expect(page).to_not have_css(".github_follower")
   end
 end
