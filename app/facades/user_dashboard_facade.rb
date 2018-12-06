@@ -16,6 +16,12 @@ class UserDashboardFacade
     end
   end
 
+  def github_following
+    get_following_result.map do |following_data|
+      Github::Following.new(following_data)
+    end
+  end
+
   private
 
   def get_repos_result
@@ -24,6 +30,10 @@ class UserDashboardFacade
 
   def get_followers_result
     @_get_followers_result ||= github_service.get_followers_json
+  end
+
+  def get_following_result
+    @_get_following_result ||= github_service.get_following_json
   end
 
   def github_service
