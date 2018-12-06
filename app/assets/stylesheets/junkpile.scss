@@ -108,7 +108,8 @@ h2 {
 
 h3 {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
+font-weight: bold;
+font-size: 150%;
 }
 
 h4 {
@@ -278,3 +279,20 @@ div.title-bookmark {
   .m {font-size: 1.2em; }
 }
 
+// user dashboard github styles
+
+.github_data {
+  display:grid;
+  grid-gap:15px;
+  grid-template-columns: 30% 70%;
+}
+
+.github_followers, .github_followings{
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+.github_followers h3, .github_followings h3 {
+  width: 100%;
+  grid-column: 1 / 5;
+}

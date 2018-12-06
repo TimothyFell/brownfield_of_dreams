@@ -1,4 +1,4 @@
-<section class="dashboard-main">
+<div class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
@@ -8,29 +8,41 @@
     <li> <%= current_user.email%> </li>
   </ul>
   <section>
-    <h1>Bookmarked Segments</h1>
+    <h3>Bookmarked Segments</h3>
   </section>
-
+  <section class="github_data">
   <% if current_user.token %>
 
-    <section>
-      <h1>GitHub Repositories</h1>
+    <div class="github_repos">
+      <h3>GitHub Repositories</h3>
       <% @user_dashboard_facade.github_repos(5).each do |repo| %>
         <div class="github_repo repo_id_<%= repo.id %>">
           <p><a href="<%= repo.url %>"><%= repo.name %></a></p>
         </div>
       <% end %>
-    </section>
+    </div>
 
-    <section>
-      <h1>GitHub Followers</h1>
-      <% @user_dashboard_facade.github_followers.each do |follower| %>
-        <div class="github_follower follower_id_<%= follower.id %>">
-          <p><a href="<%= follower.url %>"><%= follower.name %></a></p>
-        </div>
-      <% end %>
-    </section>
+    <div class="followers_following">
+      <div class="github_followers">
+        <h3>GitHub Followers</h3>
+        <% @user_dashboard_facade.github_followers.each do |follower| %>
+          <div class="github_follower follower_id_<%= follower.id %>">
+            <p><a href="<%= follower.url %>"><%= follower.name %></a></p>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="github_followings">
+        <h3>GitHub Following</h3>
+        <% @user_dashboard_facade.github_following.each do |following| %>
+          <div class="github_following following_id_<%= following.id %>">
+            <p><a href="<%= following.url %>"><%= following.name %></a></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
   <% end %>
+  </section>
 
-</section>
+</div>
