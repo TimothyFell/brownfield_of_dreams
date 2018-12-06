@@ -1,11 +1,10 @@
-class Github::Repository
-
+class Github::Follower
   attr_reader :name,
               :url,
               :id
 
   def initialize(args)
-    @name = args[:name]
+    @name = args[:login]
     @url = args[:html_url]
     @id = args[:id]
   end
