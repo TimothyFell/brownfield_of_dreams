@@ -16,7 +16,7 @@ VCR.configure do |config|
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
   config.filter_sensitive_data("<GITHUB_KEY>") { ENV['GITHUB_KEY'] }
   config.filter_sensitive_data("<GITHUB_SECRET>") { ENV['GITHUB_SECRET'] }
-  config.filter_sensitive_data("<GITHUB_SECRET>") { ENV['GITHUB_API_KEY_1'] }
+  config.filter_sensitive_data("<GITHUB_API_KEY_1>") { ENV['GITHUB_API_KEY_1'] }
 end
 
 
