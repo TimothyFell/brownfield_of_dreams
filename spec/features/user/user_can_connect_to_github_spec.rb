@@ -15,7 +15,10 @@ describe 'A registered user' do
       stub_request(:get, "https://api.github.com/user/following").
         with(headers: {"Authorization" => 'token wakawakawakawakawakawakawakawakawakawaka'}).
         to_return(body: File.read("./spec/fixtures/github_following_fixture.json"))
-        OmniAuth.config.mock_auth[:default] = nil
+
+      Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:github]
+
+      OmniAuth.config.mock_auth[:default] = nil
     end
 
     it 'they can connect to their github account' do
@@ -37,6 +40,8 @@ describe 'A registered user' do
       expect(page).to_not have_link("Connect to Github")
       expect(connected_user.token).to eq("token wakawakawakawakawakawakawakawakawakawaka")
     end
+
+
 
     describe 'After connecting' do
 
