@@ -41,14 +41,6 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-OmniAuth.config.test_mode = true
-
-OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
-  "provider" => 'github',
-  "uid" => '123545',
-  "credentials"=>{"token"=>"wakawakawakawakawakawakawakawakawakawaka"}
-})
-
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
