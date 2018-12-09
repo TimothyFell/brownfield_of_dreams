@@ -14,8 +14,9 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
-  config.filter_sensitive_data("<GITHUB_API_KEY>") { ENV['GITHUB_API_KEY_1'] }
-  config.filter_sensitive_data("<GITHUB_API_KEY>") { ENV['GITHUB_API_KEY_2'] }
+  config.filter_sensitive_data("<GITHUB_KEY>") { ENV['GITHUB_KEY'] }
+  config.filter_sensitive_data("<GITHUB_SECRET>") { ENV['GITHUB_SECRET'] }
+  config.filter_sensitive_data("<GITHUB_SECRET>") { ENV['GITHUB_API_KEY_1'] }
 end
 
 
@@ -39,6 +40,14 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+OmniAuth.config.test_mode = true
+
+OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+  "provider" => 'github',
+  "uid" => '123545',
+  "credentials"=>{"token"=>"wakawakawakawakawakawakawakawakawakawaka"}
+})
 
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
