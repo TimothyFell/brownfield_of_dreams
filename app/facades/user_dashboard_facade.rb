@@ -22,6 +22,10 @@ class UserDashboardFacade
     end
   end
 
+  def friends
+    @user.friends
+  end
+
   private
 
   def get_repos_result

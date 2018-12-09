@@ -28,6 +28,11 @@
         <% @user_dashboard_facade.github_followers.each do |follower| %>
           <div class="github_follower follower_id_<%= follower.id %>">
             <p><a href="<%= follower.url %>"><%= follower.name %></a></p>
+            <% if @user_dashboard_facade.friends.includes?(User.find_by(guid: follower.id)) %>
+              <p>Already Friends!</p>
+            <% elsif User.find_by(guid: follower.id) %>
+              <p><a href="user/add_friend/<%= follower.id %>">Add Friend</a></p>
+            <% end %>
           </div>
         <% end %>
       </div>
