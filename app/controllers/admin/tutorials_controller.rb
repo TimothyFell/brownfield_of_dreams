@@ -12,8 +12,12 @@ class Admin::TutorialsController < Admin::BaseController
 
   def update
     tutorial = Tutorial.find(params[:id])
-    if tutorial.update(tutorial_params)
+    if tutorial_params[:tag_list]
+      tutorial.update(tutorial_params)
       flash[:success] = "#{tutorial.title} tagged!"
+    elsif classroom_params[:classroom]
+      tutorial.update(classroom_params)
+      flash[:success] = "#{tutorial.title} marked as classroom content!"
     end
     redirect_to edit_admin_tutorial_path(tutorial)
   end
@@ -21,5 +25,9 @@ class Admin::TutorialsController < Admin::BaseController
   private
   def tutorial_params
     params.require(:tutorial).permit(:tag_list)
+  end
+
+  def classroom_params
+    params.require(:tutorial).permit(:classroom)
   end
 end
