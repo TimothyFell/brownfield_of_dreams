@@ -22,6 +22,18 @@ class UserDashboardFacade
     end
   end
 
+  def friends
+    @user.friends(@user.id)
+  end
+
+  def friends?(github_user_id)
+    @user.friended_users.include?(User.find_by(guid: github_user_id))
+  end
+
+  def user_exists?(github_user_id)
+    User.find_by(guid: github_user_id)
+  end
+
   private
 
   def get_repos_result

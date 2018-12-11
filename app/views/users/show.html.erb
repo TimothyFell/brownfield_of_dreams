@@ -7,9 +7,27 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
+
   <section>
     <h3>Bookmarked Segments</h3>
   </section>
+
+  <section class="friends">
+    <h3>Friends</h3>
+    <% if @user_dashboard_facade.friends %>
+      <% @user_dashboard_facade.friends.each do |friend| %>
+
+        <p class="friend"><%= friend.name %></p>
+
+      <% end %>
+    <% else %>
+
+      <img src="">
+      <p>I'll be your friend!</p>
+
+    <% end %>
+  </section>
+
   <section class="github_data">
   <% if current_user.token %>
 
@@ -26,8 +44,21 @@
       <div class="github_followers">
         <h3>GitHub Followers</h3>
         <% @user_dashboard_facade.github_followers.each do |follower| %>
+
           <div class="github_follower follower_id_<%= follower.id %>">
             <p><a href="<%= follower.url %>"><%= follower.name %></a></p>
+
+            <% if @user_dashboard_facade.friends?(follower.id) %>
+
+              <p>Already Friends!</p>
+
+            <% elsif @user_dashboard_facade.user_exists?(follower.id) %>
+
+              <p>
+                <%= link_to 'Add Friend', "/users/#{current_user.id}/add_friend/#{follower.id}", class: "add_friend", method: :post  %>
+              </p>
+
+            <% end %>
           </div>
         <% end %>
       </div>
@@ -36,7 +67,21 @@
         <h3>GitHub Following</h3>
         <% @user_dashboard_facade.github_following.each do |following| %>
           <div class="github_following following_id_<%= following.id %>">
+
             <p><a href="<%= following.url %>"><%= following.name %></a></p>
+
+            <% if @user_dashboard_facade.friends?(following.id) %>
+
+            <p>Already Friends!</p>
+
+            <% elsif @user_dashboard_facade.user_exists?(following.id) %>
+
+            <p>
+              <%= link_to 'Add Friend', "/users/#{current_user.id}/add_friend/#{following.id}", class: "add_friend", method: :post  %>
+            </p>
+
+            <% end %>
+
           </div>
         <% end %>
       </div>

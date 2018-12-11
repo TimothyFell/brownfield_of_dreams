@@ -60,26 +60,6 @@
         "site_admin": false
     },
     {
-        "login": "prestonjarnagin",
-        "id": 6053806,
-        "node_id": "MDQ6VXNlcjYwNTM4MDY=",
-        "avatar_url": "https://avatars3.githubusercontent.com/u/6053806?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/prestonjarnagin",
-        "html_url": "https://github.com/prestonjarnagin",
-        "followers_url": "https://api.github.com/users/prestonjarnagin/followers",
-        "following_url": "https://api.github.com/users/prestonjarnagin/following{/other_user}",
-        "gists_url": "https://api.github.com/users/prestonjarnagin/gists{/gist_id}",
-        "starred_url": "https://api.github.com/users/prestonjarnagin/starred{/owner}{/repo}",
-        "subscriptions_url": "https://api.github.com/users/prestonjarnagin/subscriptions",
-        "organizations_url": "https://api.github.com/users/prestonjarnagin/orgs",
-        "repos_url": "https://api.github.com/users/prestonjarnagin/repos",
-        "events_url": "https://api.github.com/users/prestonjarnagin/events{/privacy}",
-        "received_events_url": "https://api.github.com/users/prestonjarnagin/received_events",
-        "type": "User",
-        "site_admin": false
-    },
-    {
         "login": "abroberts5",
         "id": 40776966,
         "node_id": "MDQ6VXNlcjQwNzc2OTY2",

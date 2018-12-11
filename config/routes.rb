@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'friendships/create'
   namespace :api do
     namespace :v1 do
       resources :tutorials, only:[:show, :index]
@@ -39,7 +40,9 @@ Rails.application.routes.draw do
   # Is this being used?
   get '/video', to: 'video#show'
 
-  resources :users, only: [:new, :create, :update, :edit]
+  resources :users, only: [:new, :create, :update, :edit] do
+    post '/add_friend/:id', to: 'friendships#create', as: 'add_friend'
+  end
 
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]

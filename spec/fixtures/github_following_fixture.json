@@ -200,26 +200,6 @@
         "site_admin": false
     },
     {
-        "login": "averimj",
-        "id": 33760591,
-        "node_id": "MDQ6VXNlcjMzNzYwNTkx",
-        "avatar_url": "https://avatars1.githubusercontent.com/u/33760591?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/averimj",
-        "html_url": "https://github.com/averimj",
-        "followers_url": "https://api.github.com/users/averimj/followers",
-        "following_url": "https://api.github.com/users/averimj/following{/other_user}",
-        "gists_url": "https://api.github.com/users/averimj/gists{/gist_id}",
-        "starred_url": "https://api.github.com/users/averimj/starred{/owner}{/repo}",
-        "subscriptions_url": "https://api.github.com/users/averimj/subscriptions",
-        "organizations_url": "https://api.github.com/users/averimj/orgs",
-        "repos_url": "https://api.github.com/users/averimj/repos",
-        "events_url": "https://api.github.com/users/averimj/events{/privacy}",
-        "received_events_url": "https://api.github.com/users/averimj/received_events",
-        "type": "User",
-        "site_admin": false
-    },
-    {
         "login": "renecasco",
         "id": 34440390,
         "node_id": "MDQ6VXNlcjM0NDQwMzkw",
