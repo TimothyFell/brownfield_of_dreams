@@ -17,7 +17,7 @@ class Admin::TutorialsController < Admin::BaseController
       flash[:success] = "#{tutorial.title} tagged!"
     elsif classroom_params[:classroom]
       tutorial.update(classroom_params)
-      flash[:success] = "#{tutorial.title} marked as classroom content!"
+      flash[:success] = "#{tutorial.title} classroom status updated!"
     end
     redirect_to edit_admin_tutorial_path(tutorial)
   end
