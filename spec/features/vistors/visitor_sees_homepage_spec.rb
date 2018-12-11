@@ -59,7 +59,7 @@ describe 'Visitor' do
       visit tutorial_path(tutorial)
 
       expect(current_path).to eq('/')
-      expect(page).to have_content('You are not authorized to view that tutorial. Please Signup or Login to view it.')
+      expect(page).to have_content('You are not authorized to view that tutorial. Please Signup or Login to gain access.')
     end
   end
 end
