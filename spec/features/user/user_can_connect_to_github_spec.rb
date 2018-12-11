@@ -53,11 +53,11 @@ describe 'A registered user' do
 
       OmniAuth.config.mock_auth[:github] = :invalid_credentials
 
-      visit '/dashboard'
+      visit dashboard_path
 
       expect(page).to have_content("Connect to Github")
       click_link "Connect to Github"
-      expect(page).to have_content('Authentication failed.')
+      expect(current_path).to ('Invalid Credentials')
     end
 
     describe 'After connecting' do
@@ -81,7 +81,7 @@ describe 'A registered user' do
         expect(page).to have_css(".github_repo", count: 5)
       end
 
-      it 'they can see 11 followers from github' do
+      it 'they can see 10 followers from github' do
         user = create(:user)
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -97,7 +97,7 @@ describe 'A registered user' do
         visit '/dashboard'
 
         expect(page).to have_content("GitHub Followers")
-        expect(page).to have_css(".github_follower", count: 11)
+        expect(page).to have_css(".github_follower", count: 10)
       end
 
       it 'they can see 30 followings from github' do
@@ -116,7 +116,7 @@ describe 'A registered user' do
         visit '/dashboard'
 
         expect(page).to have_content("GitHub Following")
-        expect(page).to have_css(".github_following", count: 30)
+        expect(page).to have_css(".github_following", count: 29)
       end
 
 

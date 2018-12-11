@@ -45,7 +45,7 @@ feature 'A user visits their dashboard' do
     visit '/dashboard'
 
     expect(page).to have_content("GitHub Followers")
-    expect(page).to have_css(".github_follower", count: 11)
+    expect(page).to have_css(".github_follower", count: 10)
   end
 
   scenario 'cant see another users followers' do
@@ -66,7 +66,7 @@ feature 'A user visits their dashboard' do
     visit '/dashboard'
 
     expect(page).to have_content("GitHub Following")
-    expect(page).to have_css(".github_following", count: 30)
+    expect(page).to have_css(".github_following", count: 29)
   end
 
   scenario 'cant see another users following' do
