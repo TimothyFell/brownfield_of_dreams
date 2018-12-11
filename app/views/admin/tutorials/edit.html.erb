@@ -47,6 +47,17 @@
       <%= f.submit "Update Tags", class: "video-position-submit btn btn-outline" %>
     <% end %>
   </div>
+
+  <div class="classroom-content">
+    <%= form_for [:admin, @tutorial] do |f| %>
+      <%= f.check_box :classroom, id: 'classroom-content-checkbox' %>
+      <label for="classroom-content-checkbox">
+        <h4>Classroom Content</h4>
+        <p>(viewable by logged in users only)</p>
+      </label>
+      <%= f.submit 'Update Tutorial', class: "classroom-submit btn btn-outline" %>
+    <% end %>
+  </div>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.6.1/Sortable.min.js"></script>

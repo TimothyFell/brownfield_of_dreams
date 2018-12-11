@@ -22,4 +22,22 @@ describe "An Admin can edit a tutorial" do
       expect(page).to have_content("How to tie your shoes.")
     end
   end
+
+  scenario 'by checking classroom-content checkbox' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit edit_admin_tutorial_path(tutorial)
+
+    expect(page).to have_content('Classroom Content')
+    expect(tutorial.classroom).to be(false)
+
+    within '.classroom-content' do
+      check 'Classroom Content'
+      click_on 'Update Tutorial'
+    end
+
+    tutorial.reload
+
+    expect(tutorial.classroom).to be(true)
+  end
 end
