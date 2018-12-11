@@ -23,4 +23,16 @@ class User < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
+
+  def bookmark_hash(user_id)
+    videos = Video.select('videos.*, tutorials.title as tutorial_title')
+                  .joins(:user_videos, :tutorial)
+                  .where(user_videos: {user_id: user_id})
+                  .order(:position)
+
+    videos.group_by do |video|
+      video.tutorial_title
+    end
+  end
+  
 end

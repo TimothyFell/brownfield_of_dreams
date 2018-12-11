@@ -34,6 +34,10 @@ class UserDashboardFacade
     User.find_by(guid: github_user_id)
   end
 
+  def bookmarked_tutorial_videos
+    @user.bookmark_hash(@user.id)
+  end
+
   private
 
   def get_repos_result

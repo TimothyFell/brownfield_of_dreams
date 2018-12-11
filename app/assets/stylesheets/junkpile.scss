@@ -296,3 +296,9 @@ div.title-bookmark {
   width: 100%;
   grid-column: 1 / 5;
 }
+.bookmarks {
+  grid-gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+}

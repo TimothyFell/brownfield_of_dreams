@@ -10,6 +10,22 @@
 
   <section>
     <h3>Bookmarked Segments</h3>
+
+    <% @user_dashboard_facade.bookmarked_tutorial_videos.each do |tutorial_name, videos| %>
+      <div class="tutorial-<%= videos[0].tutorial_id %>">
+        <h4><%= tutorial_name %> </h4>
+        <div class="bookmarks">
+          <% videos.each do |video| %>
+          <div class="bookmark">
+            <img src="<%= video.thumbnail %>" alt="thumbnail" class="thumbnail">
+          <p><%= link_to video.title, "/tutorials/#{video.tutorial_id}?video_id=#{video.id}" %></p>  
+          </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+
   </section>
 
   <section class="friends">
