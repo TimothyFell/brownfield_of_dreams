@@ -115,6 +115,15 @@ m3_tutorial.videos.create!({
   "position"=>6
 })
 
+empty_tutorial_data = {
+  "title"=>"Empty Tutorial",
+  "description"=>"A bunch of Nada.",
+  "thumbnail"=>"https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg",
+  "playlist_id"=>"PL1Y67f0xPzdN6C-LPuTQ5yzlBoz2joWa5",
+  "classroom"=>false,
+}
+empty_tutorial = Tutorial.create! empty_tutorial_data
+
 User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :admin)
 
 User.create!(email: 'user@example.com', first_name: 'user', last_name: '1', password:  "user", role: :default, token: ENV['GITHUB_API_KEY_1'])
