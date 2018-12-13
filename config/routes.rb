@@ -46,7 +46,8 @@ Rails.application.routes.draw do
   end
 
   get '/email_confirmation', to: 'confirmations#update', as: 'email_confirmation'
-
+  get '/confirmed', to: 'confirmations#index', as: 'confirmed'
+  
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]
   end

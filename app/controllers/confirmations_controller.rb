@@ -1,9 +1,12 @@
 class ConfirmationsController < ApplicationController
+
+  def index
+  end
+
   def update
     user = User.find(params[:id])
     user.update(active: true)
     user.save!
-    flash[:notice] = "Thank you! Your account is now activated."
-    redirect_to dashboard_path
+    redirect_to confirmed_path
   end
 end

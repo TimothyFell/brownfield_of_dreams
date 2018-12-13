@@ -1,7 +1,7 @@
 Hello <%= @user.name.capitalize %>,
-
-Please activate your account by clicking <%= link_to 'here', email_confirmation_url(host: 'http://localhost:3000', id: @user.id) %>.
-
-Love,
-
-Your Mom
+<br />
+<p>Please activate your account by clicking <%= link_to 'here', email_confirmation_url(host: @host, id: @user.id) %>.</p>
+<br />
+<p>Love,</p>
+<br />
+<p>Your Mom</p>
