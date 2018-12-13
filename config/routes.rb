@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'users#update'
   get 'auth/failure', to: redirect('/')
 
+
   get '/dashboard', to: 'users#show'
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
@@ -44,6 +45,9 @@ Rails.application.routes.draw do
     post '/add_friend/:id', to: 'friendships#create', as: 'add_friend'
   end
 
+  get '/email_confirmation', to: 'confirmations#update', as: 'email_confirmation'
+  get '/confirmed', to: 'confirmations#index', as: 'confirmed'
+  
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]
   end

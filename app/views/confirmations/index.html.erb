@@ -1,0 +1,6 @@
+<h1>Thank you! Your account is now activated.</h1>
+<% if current_user %>
+  <p>Click <%= link_to "here", dashboard_path %> to visit your dashboard</p>
+<% else %>
+  <p>Please <%= link_to "login", login_path %> to continue</p>
+<% end %>
