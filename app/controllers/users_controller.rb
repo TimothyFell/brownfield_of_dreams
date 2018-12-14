@@ -26,6 +26,7 @@ class UsersController < ApplicationController
     user = User.find(current_user.id)
     user.token = "token #{request.env['omniauth.auth']["credentials"]["token"]}"
     user.guid =  request.env['omniauth.auth']["uid"]
+    user.github_name = request.env['omniauth.auth']['name']
     user.save!
     redirect_to dashboard_path
   end

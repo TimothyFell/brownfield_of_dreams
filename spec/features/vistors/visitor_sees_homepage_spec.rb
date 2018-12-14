@@ -45,7 +45,6 @@ describe 'Visitor' do
         expect(page).to have_content(tutorial1.title)
         expect(page).to have_content(tutorial1.description)
       end
-
       expect(page).to_not have_content(tutorial3.title)
       expect(page).to_not have_content(tutorial3.description)
     end
