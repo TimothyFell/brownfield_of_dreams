@@ -69,7 +69,7 @@
   </div>
 <% else %>
   <h4>No videos in this tutorial</h4>
-  <% if current_user.role == "admin" %>
+  <% if current_user && current_user.role == "admin" %>
     <%= link_to "Edit Tutorial", "/admin/tutorials/#{@facade.id}/edit" %>
   <% end %>
 <% end %>
