@@ -15,13 +15,6 @@ describe 'a user connected to github' do
       with(headers: {"Authorization" => 'token wakawakawakawakawakawakawakawakawakawaka'}).
       to_return(body: File.read("./spec/fixtures/github_following_fixture.json"))
 
-    # Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:github]
-    #
-    # OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
-    #   "provider" => 'github',
-    #   "uid" => '123545',
-    #   "credentials"=>{"token"=>"wakawakawakawakawakawakawakawakawakawaka"}
-    # })
     @user = create(:user, token: "token wakawakawakawakawakawakawakawakawakawaka", guid: 1000)
     @follower = create(:user, token: "token mole", guid: 33760591)
     @following = create(:user, token: "token pizza", guid: 6053806)
@@ -115,18 +108,16 @@ describe 'a user connected to github' do
     end
   end
 
-  xit 'should not be able to friend non-existant users' do
+  it 'should not be able to friend non-existant users' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
     visit dashboard_path
 
-    post "/users/#{@user.id}/add_friend/0987654321"
+    page.driver.post("/users/#{@user.id}/add_friend/0987654321")
+    click_on "redirected"
 
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content('That is an invalid user to friend!')
   end
 
-  xit 'should not be able to friend users not in their follower/following lists' do
-
-  end
 end
