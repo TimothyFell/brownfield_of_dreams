@@ -44,10 +44,13 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :update, :edit] do
     post '/add_friend/:id', to: 'friendships#create', as: 'add_friend'
   end
+  get '/invite', to: 'invitations#new', as: 'invite'
+  post '/invitation', to: 'invitations#create'
+
 
   get '/email_confirmation', to: 'confirmations#update', as: 'email_confirmation'
   get '/confirmed', to: 'confirmations#index', as: 'confirmed'
-  
+
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]
   end
